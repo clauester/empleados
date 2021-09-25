@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+
+
+.btn{
+    float: right;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+.h3{
+    font-size: 25px;
+    margin-right: 40px;
+}
+@media (max-width: 939px) {
+    tr{
+        padding-right: 50px;
+    }
+    .btn{
+        margin-top: 20px;
+       float: none;
+    }
+    .h3{
+        font-size: 25px;
+        margin: auto;
+    }
+    table tr{
+        display: grid;
+        flex-direction: column;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+    table td[data-titulo]{
+        display:flex;
+    }
+    table td[data-titulo]::before{
+        content: attr(data-titulo);
+        width: 90px;
+    }
+    table thead{
+        display: none;
+    }
+}

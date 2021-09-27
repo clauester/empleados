@@ -14,6 +14,7 @@ export class CreateEmpleadoComponent implements OnInit {
     submitted = false;
     id: string | null;
     titulo = 'Agregar Empleado';
+    bandera =false;
 
 
   constructor(private fb: FormBuilder,
@@ -30,7 +31,7 @@ export class CreateEmpleadoComponent implements OnInit {
 
     })
     this.id = this.aRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
+   // console.log(this.id);
   }
 
   ngOnInit(): void {
@@ -38,6 +39,7 @@ export class CreateEmpleadoComponent implements OnInit {
   }
   agregarEditarEmpleado(){
     this.submitted=true;
+  
     if(this.createEmpleado.invalid){
       return;
 
@@ -51,17 +53,42 @@ export class CreateEmpleadoComponent implements OnInit {
    
     
   }
+  // mayuscula(string campo){
+  //   const adon: any={
+  //      campo: this.createEmpleado.value.nombre,
+      
+  //   }
+  //  console.log(adon);
+   
+  // }
+
+  
 
   agregarEmpleado(){
+    const Nombre1= this.createEmpleado.value.nombre
+    const Apellido1= this.createEmpleado.value.apellido
+    const Salario1= this.createEmpleado.value.salario
+    const Documento1= this.createEmpleado.value.documento
+
+    const Mnombre= Nombre1[0].toUpperCase() + Nombre1.substr(1).toLowerCase();
+    const Mapellido= Apellido1[0].toUpperCase() + Apellido1.substr(1).toLowerCase();
+    if ( isNaN(Salario1) ){
+        return Salario1;
+    }
+  
+    
+    
     const empleado: any={
-      nombre: this.createEmpleado.value.nombre,
-      apellido: this.createEmpleado.value.apellido,
+      nombre: Mnombre,
+      apellido: Mapellido,
       documento: this.createEmpleado.value.documento,
       salario: this.createEmpleado.value.salario,
       fechaCreacion: new Date(),
-      fechaActualizacion: new Date()
-    }
+      fechaActualizacion: new Date(),
 
+      
+    }
+    //console.log(empleado.nombre);
     this._empleadoService.agregarEmpleado(empleado).then(() =>{
       this.toastr.success('el empleado fue registrado con exito','Empleado registrado',{
         positionClass: 'toast-bottom-right'

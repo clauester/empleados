@@ -11,17 +11,19 @@
     font-size: 25px;
     margin-right: 40px;
 }
-@media (max-width: 939px) {
-    tr{
-        padding-right: 50px;
-    }
+@media (max-width: 478px) {
+  
     .btn{
         margin-top: 20px;
+        margin-left: 20px;
        float: none;
+       flex: none;
+       align-items: left;
     }
     .h3{
         font-size: 25px;
-        margin: auto;
+        margin-right: 50px;
+        flex: none;
     }
     table tr{
         display: grid;

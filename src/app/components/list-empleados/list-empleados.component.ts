@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -12,7 +13,8 @@ import { EmpleadoService } from 'src/app/services/empleado.service';
 export class ListEmpleadosComponent implements OnInit {
   empleados: any[]= [];
   constructor(private _empleadoService: EmpleadoService,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        public afAuth: AngularFireAuth,
     
     ) { 
    
